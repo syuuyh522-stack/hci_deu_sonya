@@ -1,0 +1,80 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>서비스 플로우</title>
+<style>body{font-family:system-ui,sans-serif;margin:0;padding:24px;background:#fafaf8;color:#222}h1{font-size:22px}h2{font-size:17px;margin:32px 0 6px}.box{background:#fff;border:1px solid #ddd;border-radius:12px;padding:16px;overflow-x:auto}.lg{font-size:13px;color:#555}.lg span{display:inline-block;margin-right:14px}.lg i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script></head><body>
+<h1>오늘옷 서비스 플로우</h1>
+<p class="lg"><span><i style="background:#e8f1ff;border:1px solid #4a7fd6"></i>와이어프레임 있음</span><span><i style="background:#fff4e0;border:1px dashed #d68a1a"></i>와이어프레임 없음</span><span><i style="background:#ffecec;border:1px dashed #c44"></i>새 화면</span></p>
+<h2>전체 서비스 플로우 (굵은 화살표: 핵심 플로우)</h2>
+<div class="box"><pre class="mermaid">
+flowchart LR
+  subgraph G3["3.0 알림"]
+    S3_0["알림 3.0"]
+    W1["예보 없음 안내 알림 3.0"]
+    M1["예보 변경 아침 알림 3.0"]
+  end
+  subgraph G1["1.0 오늘의 타임라인"]
+    S1_0["오늘의 타임라인 1.0"]
+    S1_1["저녁 체감 피드백 1.1"]
+  end
+  subgraph GN["새 화면"]
+    N1["내일 미리보기 (새 화면)"]
+    N2["하루 일정 바꾸기 (새 화면)"]
+  end
+  S3_0 ==>|"밤 10시 알림 누르기"| N1
+  N1 ==>|"옷 꺼내 두고 닫기"| END1["끝 목표 이룸"]
+  N1 -.->|"내일 일정이나 동네가 다름"| N2
+  N2 -->|"저장"| N1
+  S3_0 -->|"아침 7시 알림 누르기"| S1_0
+  S3_0 -.->|"알림만 보고 끝냄"| END1
+  S3_0 -.->|"알림을 놓침, 직접 열기"| S1_0
+  S3_0 -.->|"예보를 못 받음"| W1
+  END1 -.->|"다음 날 아침 예보가 크게 바뀜"| M1
+  M1 -->|"알림 누르기"| S1_0
+  S1_0 -->|"보고 옷 입고 나가기"| END1
+  S1_0 -.->|"오늘 일정이 평소와 다름"| N2
+  N2 -->|"저장"| S1_0
+  S1_0 -.->|"추천이 내 느낌과 다름, 저녁에 남기기"| S1_1
+  S1_1 -->|"남기기"| S1_0
+  S1_0 <-->|"오늘 내일 전환"| N1
+  classDef has fill:#e8f1ff,stroke:#4a7fd6
+  classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
+  classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
+  class S3_0,W1,M1,S1_0,S1_1 has
+  class N1,N2 new
+</pre></div>
+<h2>플로우 1: 전날 밤에 내일 옷 정하기 (핵심)</h2>
+<div class="box"><pre class="mermaid">
+flowchart LR
+  S3_0["알림 3.0"] -->|"밤 10시 결론 보고 알림 누르기"| N1["내일 미리보기 (새 화면)"]
+  N1 -->|"옷 꺼내 두고 닫기"| END1["끝 목표 이룸"]
+  N1 -.->|"내일 일정이나 동네가 다름"| N2["하루 일정 바꾸기 (새 화면)"]
+  N2 -->|"저장"| N1
+  S3_0 -.->|"알림을 놓침, 아침에 직접 열기"| S1_0["오늘의 타임라인 1.0"]
+  S3_0 -.->|"예보를 못 받음"| W1["예보 없음 안내 알림 3.0"]
+  END1 -.->|"다음 날 아침 예보가 크게 바뀜"| M1["예보 변경 아침 알림 3.0"]
+  M1 -->|"알림 누르기"| S1_0
+  classDef has fill:#e8f1ff,stroke:#4a7fd6
+  classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
+  classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
+  class S3_0,S1_0,W1,M1 has
+  class N1,N2 new
+</pre></div>
+<h2>플로우 2: 아침 5분 안에 옷 정하기</h2>
+<div class="box"><pre class="mermaid">
+flowchart LR
+  S3_0["알림 3.0"] -->|"아침 7시 결론 보고 알림 누르기"| S1_0["오늘의 타임라인 1.0"]
+  S1_0 -->|"보고 옷 입고 나가기"| END2["끝 목표 이룸"]
+  S1_0 -.->|"오늘 일정이 평소와 다름"| N2["하루 일정 바꾸기 (새 화면)"]
+  N2 -->|"저장"| S1_0
+  S1_0 -.->|"추천이 내 느낌과 다름, 저녁에 남기기"| S1_1["저녁 체감 피드백 1.1"]
+  S1_1 -->|"남기기"| S1_0
+  S3_0 -.->|"알림만 보고 끝냄"| END2
+  S3_0 -.->|"알림을 놓침, 직접 열기"| S1_0
+  classDef has fill:#e8f1ff,stroke:#4a7fd6
+  classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
+  classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
+  class S3_0,S1_0,S1_1 has
+  class N2 new
+</pre></div>
+<script>mermaid.initialize({startOnLoad:true,theme:"neutral",flowchart:{htmlLabels:true}})</script>
+</body></html>
