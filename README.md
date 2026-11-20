@@ -12,5 +12,6 @@
 | [`research/persona-kim-seoyeon.md`](research/persona-kim-seoyeon.md) | 퍼소나: 김서연 (기온만 보고 입었다가 오후에 후회) |
 | [`research/persona-lee-haeun.md`](research/persona-lee-haeun.md) | 퍼소나: 이하은 (전날 밤에 옷을 정해두고 싶음) |
 | [`research/persona-park-junho.md`](research/persona-park-junho.md) | 퍼소나: 박준호 (추위를 많이 타서 일반 추천을 안 믿음) |
+| [`wireframes/`](wireframes/) | 모바일 와이어프레임 7장 (온보딩 01~04, 알림 05, 오늘의 타임라인 06, 저녁 체감 피드백 07) |
 
 랜딩 페이지는 `index.html`을 브라우저로 열면 바로 볼 수 있습니다. 신청 폼은 아직 실제로 전송하지 않고 안내 문구만 보여줍니다.
