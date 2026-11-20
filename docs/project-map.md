@@ -11,7 +11,7 @@
 | 퍼소나 | `research/persona-kim-seoyeon.md` (주), `research/persona-lee-haeun.md` (보조), `research/persona-park-junho.md` (체감 보정 근거) |
 | 인터뷰, 조사 | `research/interviews.md` |
 | 메뉴 구조 | 없음 |
-| 와이어프레임 | `wireframes/` (01~07, 7개) |
+| 와이어프레임 | `wireframes/` (01~07, 1.2) |
 | 그 밖의 기획 문서 | `index.html` (이전 기획 기준의 랜딩 페이지, 새 기획과 내용이 다름) |
 
 ## 핵심 기능 (기획서 그대로)
@@ -32,6 +32,7 @@
 |---|---|---|---|
 | 1.0 | 오늘의 타임라인 (홈) | `wireframes/06-today-timeline.html` | |
 | 1.1 | 저녁 체감 피드백 | `wireframes/07-feedback.html` | |
+| 1.2 | 내일 미리보기 | `wireframes/1.2-tomorrow-preview.html` | `/flow` 에서 새로 생긴 화면. 1.0과 "오늘 / 내일" 전환으로 오감 |
 | 2.0 | 온보딩 | | 아래 네 화면의 묶음 |
 | 2.1 | 동네 선택 | `wireframes/01-onboard-location.html` | |
 | 2.2 | 평소 일정 | `wireframes/02-onboard-schedule.html` | |
