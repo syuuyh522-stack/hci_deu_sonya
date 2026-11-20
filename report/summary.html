@@ -1,0 +1,87 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한 장 요약</title>
+<style id="proto-style">
+</style>
+<style>
+html,body{margin:0;background:#e9eaee;font-family:system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1d1d1f}
+#rp-bar{position:sticky;top:0;z-index:5;display:flex;gap:12px;align-items:center;padding:10px 16px;background:#1d1d1f;color:#fff;font-size:14px}
+#rp-bar button{font:inherit;font-weight:600;padding:8px 16px;border:0;border-radius:8px;background:#fff;color:#1d1d1f;cursor:pointer}
+#rp-board{width:1600px;margin:20px auto;background:#fff;padding:40px 44px;box-sizing:border-box;display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.rp-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border-bottom:3px solid #1d1d1f;padding-bottom:16px}
+.rp-head h1{margin:0;font-size:40px;line-height:1.15}.rp-head p{margin:6px 0 0;font-size:19px;color:#444}.rp-meta{text-align:right;font-size:15px;color:#555;white-space:nowrap}
+.rp-card{border:1px solid #d9d9de;border-radius:14px;padding:18px 20px;min-width:0;background:#fff}
+.rp-card h2{margin:0 0 10px;font-size:15px;letter-spacing:.04em;color:#666;font-weight:600}
+.rp-card ul,.rp-card ol{margin:0;padding-left:20px;font-size:16px;line-height:1.55}.rp-card p{margin:0;font-size:16px;line-height:1.55}
+.rp-steps{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rp-step{border-radius:12px;background:#f3f4f7;padding:14px 16px}.rp-step b{display:block;font-size:17px;margin-bottom:4px}.rp-step span{font-size:15px;color:#333;line-height:1.5}
+.rp-flow{grid-column:1/-1}.rp-flow .mermaid{margin:0;text-align:center}.rp-flow svg{max-width:100%;height:auto}
+.rp-check{grid-column:span 5}.rp-design{grid-column:span 3}.rp-decide{grid-column:span 4}
+.rp-table{width:100%;border-collapse:collapse;font-size:15px}.rp-table td,.rp-table th{border-top:1px solid #e3e3e8;padding:6px 6px;text-align:left;vertical-align:top}
+.rp-tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:13px;font-weight:600}.rp-ok{background:#e2f4e6;color:#1c6b2f}.rp-weak{background:#fff0d6;color:#8a5a00}.rp-miss{background:#ffe3e0;color:#a3261a}
+.rp-chips{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}.rp-chip{display:flex;align-items:center;gap:8px;font-size:14px}.rp-chip i{width:28px;height:28px;border-radius:8px;border:1px solid #0002;display:inline-block}
+.rp-screens{grid-column:span 8}.rp-next{grid-column:span 4}
+.rp-shots{display:flex;gap:18px;flex-wrap:wrap}.rp-shotbox{width:195px}.rp-shotbox figcaption{font-size:14px;margin-top:8px;text-align:center;color:#333}
+.rp-shot{width:195px;height:390px;overflow:hidden;border:1px solid #cfcfd6;border-radius:16px;background:#fff;position:relative}
+.rp-shot>.screen{display:block!important;width:390px;min-height:780px;transform:scale(.5);transform-origin:0 0;pointer-events:none}
+.rp-empty{color:#888;font-size:15px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+</head><body>
+<div id="rp-bar"><button id="rp-save">이미지로 저장</button><span id="rp-msg">아래 한 장이 그대로 이미지가 돼요.</span></div>
+<div id="rp-board">
+ <header class="rp-head"><div><h1>오늘옷 (가칭)</h1><p>아침 기온 하나만 보고 입었다가 후회하지 않게, 오늘 하루 아침·낮·저녁에 맞춰 무엇을 입고 언제 벗고 무엇을 챙길지 알려주는 서비스.</p></div><div class="rp-meta"><br><br>2026-11-20</div></header>
+ <section class="rp-steps">
+  <div class="rp-step"><b>1. 자료 지도</b><span>기획서, 인터뷰, 퍼소나 3명, 와이어프레임 7장을 정리하고 화면 목록 초안에 ID를 붙임</span></div>
+  <div class="rp-step"><b>2. 서비스 플로우</b><span>플로우 2개 (핵심: 이하은 전날 밤). 새 화면 3개를 필요로 판단해 와이어프레임 추가(1.2~1.4), 설정은 온보딩과 합침</span></div>
+  <div class="rp-step"><b>3. 기획 점검</b><span>핵심 기능 6개 중 들어감 3, 약함 3, 빠짐 0. 팀 결정 7개를 기획서와 플로우에 반영</span></div>
+  <div class="rp-step"><b>4. 디자인</b><span>아직 하지 않았어요</span></div>
+ </section>
+ <section class="rp-card rp-flow"><h2>핵심 플로우</h2><pre class="mermaid">
+flowchart LR
+  S3_0["알림 3.0"] -->|"밤 10시 결론 보고 알림 누르기"| N1["내일 미리보기 1.2"]
+  N1 -->|"이렇게 입을게요 누르기"| END1["끝 목표 이룸"]
+  N1 -.->|"내일 일정이 평소와 다름"| N2["내일 일정 바꾸기 1.3"]
+  N2 -->|"저장"| N1
+  S3_0 -.->|"알림을 놓침, 아침에 직접 열기"| S1_0["오늘의 타임라인 1.0"]
+  S3_0 -.->|"예보를 못 받음"| W1["예보 없음 안내 알림 3.0"]
+  END1 -.->|"다음 날 아침 예보가 크게 바뀜"| M1["예보 변경 아침 알림 3.0"]
+  M1 -->|"알림 누르기"| S1_0
+  classDef has fill:#e8f1ff,stroke:#4a7fd6
+  classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
+  classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
+  class S3_0,S1_0,W1,M1,N1,N2 has
+ </pre></section>
+ <section class="rp-card rp-check"><h2>기획 점검 결과</h2><table class="rp-table"><tr><th>핵심 기능</th><th style="white-space:nowrap">판정</th><th>그래서</th></tr>
+  <tr><td>시간대별 레이어링 타임라인</td><td style="white-space:nowrap"><span class="rp-tag rp-weak">약함</span></td><td>1.2 일정 줄마다 입기 / 벗기 / 다시 입기 표시를 붙임</td></tr>
+  <tr><td>일정별 날씨</td><td style="white-space:nowrap"><span class="rp-tag rp-ok">들어감</span></td><td></td></tr>
+  <tr><td>내 체감 보정</td><td style="white-space:nowrap"><span class="rp-tag rp-weak">약함</span></td><td>저녁 이후 1.0 맨 위에 "오늘 어땠어요?" 피드백 카드</td></tr>
+  <tr><td>바람·비 번역</td><td style="white-space:nowrap"><span class="rp-tag rp-ok">들어감</span></td><td></td></tr>
+  <tr><td>미세먼지</td><td style="white-space:nowrap"><span class="rp-tag rp-weak">약함</span></td><td>나쁨 이상인 날만 알림과 챙길 것에 "마스크"</td></tr>
+  <tr><td>알림</td><td style="white-space:nowrap"><span class="rp-tag rp-ok">들어감</span></td><td></td></tr>
+ </table></section>
+ <section class="rp-card rp-design"><h2>디자인 방향</h2><p class="rp-empty">아직 하지 않았어요</p></section>
+ <section class="rp-card rp-decide"><h2>우리가 내린 결정과 이유</h2><ol>
+  <li>핵심 플로우를 "이하은: 전날 밤에 내일 옷 정하기"로 정함. 팀 선택</li>
+  <li>1.0과 내일 미리보기 위쪽에 "오늘 / 내일" 전환. 내일 미리보기가 밤 알림으로만 들어갈 수 있고 홈으로 돌아갈 길이 없었음</li>
+  <li>예보 변경 아침 알림은 2.4에서 켜고 끄게 함. 기획서의 "하루 한 번"과 이하은·참가자 D의 불편을 함께 맞추기 위해</li>
+  <li>"이렇게 입을게요"를 누르면 옷을 확정하고 다음 날 아침 "어제 정한 옷"으로 보여줌. 핵심 목표 "전날 밤에 정해 두기"가 눈에 보이게</li>
+ </ol></section>
+ <section class="rp-card rp-screens"><h2>주요 화면 (핵심 플로우 순서)</h2><div class="rp-shots">
+  <p class="rp-empty">아직 만든 화면이 없어요</p>
+ </div></section>
+ <section class="rp-card rp-next"><h2>다음에 할 일</h2><ul>
+  <li><code>/design</code> 으로 디자인 방향 정하고 핵심 플로우 화면부터 만들기</li>
+  <li>1.0 오늘/내일 전환·오늘 일정 바꾸기·저녁 피드백 카드, 1.2 버튼 연결, 2.4 예보 변경 알림 켜고 끄기 반영</li>
+  <li>사용성 평가에서 이하은의 실내외 온도 차이, 무거운 가방 불편 확인</li>
+ </ul></section>
+</div>
+<script>
+mermaid.initialize({startOnLoad:true,theme:"neutral",flowchart:{htmlLabels:false}});
+document.getElementById("rp-save").onclick=async()=>{const m=document.getElementById("rp-msg");
+ if(!window.html2canvas){m.textContent="인터넷이 안 돼서 저장 도구를 못 불러왔어요. 화면 캡처로 저장하세요.";return}
+ m.textContent="만드는 중이에요.";
+ try{const c=await html2canvas(document.getElementById("rp-board"),{scale:1.5,backgroundColor:"#ffffff",useCORS:true});
+  const a=document.createElement("a");a.download="summary.png";a.href=c.toDataURL("image/png");a.click();m.textContent="summary.png 로 저장했어요. 다운로드 폴더를 확인하세요."}
+ catch(e){m.textContent="저장하지 못했어요. 화면 캡처로 저장하세요."}};
+</script></body></html>
