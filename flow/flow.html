@@ -17,9 +17,7 @@ flowchart LR
     S1_1["저녁 체감 피드백 1.1"]
     N1["내일 미리보기 1.2"]
     N2["내일 일정 바꾸기 1.3"]
-  end
-  subgraph GN["새 화면"]
-    N3["오늘 일정 바꾸기 (새 화면)"]
+    N3["오늘 일정 바꾸기 1.4"]
   end
   S3_0 ==>|"밤 10시 알림 누르기"| N1
   N1 ==>|"옷 꺼내 두고 닫기"| END1["끝 목표 이룸"]
@@ -40,8 +38,7 @@ flowchart LR
   classDef has fill:#e8f1ff,stroke:#4a7fd6
   classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
   classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
-  class S3_0,W1,M1,S1_0,S1_1,N1,N2 has
-  class N3 new
+  class S3_0,W1,M1,S1_0,S1_1,N1,N2,N3 has
 </pre></div>
 <h2>플로우 1: 전날 밤에 내일 옷 정하기 (핵심)</h2>
 <div class="box"><pre class="mermaid">
@@ -64,7 +61,7 @@ flowchart LR
 flowchart LR
   S3_0["알림 3.0"] -->|"아침 7시 결론 보고 알림 누르기"| S1_0["오늘의 타임라인 1.0"]
   S1_0 -->|"보고 옷 입고 나가기"| END2["끝 목표 이룸"]
-  S1_0 -.->|"오늘 일정이 평소와 다름"| N3["오늘 일정 바꾸기 (새 화면)"]
+  S1_0 -.->|"오늘 일정이 평소와 다름"| N3["오늘 일정 바꾸기 1.4"]
   N3 -->|"저장"| S1_0
   S1_0 -.->|"추천이 내 느낌과 다름, 저녁에 남기기"| S1_1["저녁 체감 피드백 1.1"]
   S1_1 -->|"남기기"| S1_0
@@ -73,8 +70,7 @@ flowchart LR
   classDef has fill:#e8f1ff,stroke:#4a7fd6
   classDef none fill:#fff4e0,stroke:#d68a1a,stroke-dasharray:4
   classDef new fill:#ffecec,stroke:#c44,stroke-dasharray:4
-  class S3_0,S1_0,S1_1 has
-  class N3 new
+  class S3_0,S1_0,S1_1,N3 has
 </pre></div>
 <script>mermaid.initialize({startOnLoad:true,theme:"neutral",flowchart:{htmlLabels:true}})</script>
 </body></html>
